@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>830178002286-m3fud2r76foc51oi9k9q02l3uitj0i0p.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.830178002286-m3fud2r76foc51oi9k9q02l3uitj0i0p</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>830178002286-d3m2h63flhorrdve8c24oa9p7s5he9ch.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCyBM3NMrjW3bUV2MNAbMXchhhFuBpbrjA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>830178002286</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>br.com.rebecamotta.cuidapetCurso</string>
+	<key>PROJECT_ID</key>
+	<string>cuidapet-curso-32ffb</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cuidapet-curso-32ffb.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:830178002286:ios:7eebfa5f2af9fe0843ad7f</string>
+</dict>
+</plist>

@@ -1,0 +1,13 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_modular/flutter_modular_test.dart';
+
+import 'package:cuidapet_curso/app/modules/home/addresses/detail/detail_page.dart';
+
+void main() {
+  testWidgets('DetailPage has title', (tester) async {
+    //  await tester.pumpWidget(buildTestableWidget(DetailPage(title: 'Detail')));
+    //  final titleFinder = find.text('Detail');
+    //  expect(titleFinder, findsOneWidget);
+  });
+}
