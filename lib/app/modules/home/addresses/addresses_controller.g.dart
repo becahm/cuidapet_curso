@@ -52,6 +52,14 @@ mixin _$AddressesController on _AddressesControllerBase, Store {
     return _$myLocationAsyncAction.run(() => super.myLocation());
   }
 
+  final _$searchAddressesAsyncAction =
+      AsyncAction('_AddressesControllerBase.searchAddresses');
+
+  @override
+  Future<void> searchAddresses() {
+    return _$searchAddressesAsyncAction.run(() => super.searchAddresses());
+  }
+
   final _$selectAddressAsyncAction =
       AsyncAction('_AddressesControllerBase.selectAddress');
 

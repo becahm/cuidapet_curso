@@ -70,17 +70,17 @@ abstract class _AddressesControllerBase with Store {
   void verifyEditAddress(AddressModel editAddress) {
     if (editAddress == null) {
       addressTextController.text = '';
-      //searchAddresses();
+      searchAddresses();
     } else {
       addressTextController.text = editAddress.endereco;
       addressTextFocusNode.requestFocus();
     }
   }
 
-  // @action
-  // void searchAddresses() async {
-  //   addressesFuture = ObservableFuture(_service.getRegisteredAddresses());
-  // }
+  @action
+  Future<void> searchAddresses() async {
+    addressesFuture = ObservableFuture(_service.getRegisteredAddresses());
+  }
 
   @action
   Future<void> selectAddress(AddressModel address) async {

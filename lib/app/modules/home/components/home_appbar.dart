@@ -68,7 +68,8 @@ class HomeAppBar extends PreferredSize {
                 icon: Icon(Icons.location_on),
                 onPressed: () async {
                   await Modular.link.pushNamed(AddressesModule.route);
-                  controller.getSelectedAddress();
+                  await controller.getSelectedAddress();
+                  controller.getProviders();
                 },
               )
             ],

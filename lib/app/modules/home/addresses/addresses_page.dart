@@ -20,7 +20,7 @@ class _AddressesPageState
   @override
   void initState() {
     super.initState();
-    //controller.searchAddresses();
+    controller.searchAddresses();
   }
   //use 'controller' variable to access controller
 
@@ -141,6 +141,7 @@ class _AddressesPageState
                               var addresses = snapshot.data;
 
                               return ListView.builder(
+                                physics: NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
                                 itemCount: addresses.length,
                                 itemBuilder: (context, index) =>
