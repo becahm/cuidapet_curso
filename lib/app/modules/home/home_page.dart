@@ -44,18 +44,22 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
       backgroundColor: Colors.grey[100],
       drawer: Drawer(),
       appBar: appBar,
-      body: SingleChildScrollView(
-        child: Container(
-          height: ScreenUtil.screenHeightDp -
-              appBar.preferredSize.height -
-              ScreenUtil.statusBarHeight,
-          width: double.infinity,
-          child: Column(
-            children: [
-              _buildAddress(),
-              _buildCategories(),
-              Expanded(child: _buildPlaces()),
-            ],
+      body: RefreshIndicator(
+        onRefresh: () => controller.getProviders(),
+        child: SingleChildScrollView(
+          physics: AlwaysScrollableScrollPhysics(),
+          child: Container(
+            height: ScreenUtil.screenHeightDp -
+                appBar.preferredSize.height -
+                ScreenUtil.statusBarHeight,
+            width: double.infinity,
+            child: Column(
+              children: [
+                _buildAddress(),
+                _buildCategories(),
+                Expanded(child: _buildPlaces()),
+              ],
+            ),
           ),
         ),
       ),
@@ -112,13 +116,19 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
 
                       return Column(
                         children: [
-                          FlatButton(
-                            shape: CircleBorder(),
-                            color: ThemeUtils.primaryColorLight,
-                            height: 50,
-                            onPressed: () {},
-                            child: Icon(categoriesIcons[category.tipo]),
-                          ),
+                          Observer(builder: (_) {
+                            return FlatButton(
+                              shape: CircleBorder(),
+                              color:
+                                  controller.selectedCategoryId == category.id
+                                      ? ThemeUtils.primaryColor
+                                      : ThemeUtils.primaryColorLight,
+                              height: 50,
+                              onPressed: () =>
+                                  controller.filterCategory(category.id),
+                              child: Icon(categoriesIcons[category.tipo]),
+                            );
+                          }),
                           SizedBox(height: 10),
                           Text(
                             category.nome,

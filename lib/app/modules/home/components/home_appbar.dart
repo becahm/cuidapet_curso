@@ -34,6 +34,8 @@ class HomeAppBar extends PreferredSize {
                       elevation: 4,
                       borderRadius: BorderRadius.circular(30),
                       child: TextFormField(
+                        controller: controller.filterTextFieldController,
+                        onChanged: (name) => controller.filterByName(),
                         decoration: InputDecoration(
                           filled: true,
                           fillColor: Colors.white,

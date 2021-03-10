@@ -83,6 +83,22 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
+  final _$selectedCategoryIdAtom =
+      Atom(name: '_HomeControllerBase.selectedCategoryId');
+
+  @override
+  int get selectedCategoryId {
+    _$selectedCategoryIdAtom.reportRead();
+    return super.selectedCategoryId;
+  }
+
+  @override
+  set selectedCategoryId(int value) {
+    _$selectedCategoryIdAtom.reportWrite(value, super.selectedCategoryId, () {
+      super.selectedCategoryId = value;
+    });
+  }
+
   final _$initPageAsyncAction = AsyncAction('_HomeControllerBase.initPage');
 
   @override
@@ -106,6 +122,14 @@ mixin _$HomeController on _HomeControllerBase, Store {
   Future<void> getSelectedAddress() {
     return _$getSelectedAddressAsyncAction
         .run(() => super.getSelectedAddress());
+  }
+
+  final _$getProvidersAsyncAction =
+      AsyncAction('_HomeControllerBase.getProviders');
+
+  @override
+  Future<void> getProviders() {
+    return _$getProvidersAsyncAction.run(() => super.getProviders());
   }
 
   final _$_HomeControllerBaseActionController =
@@ -134,11 +158,22 @@ mixin _$HomeController on _HomeControllerBase, Store {
   }
 
   @override
-  void getProviders() {
+  void filterCategory(int id) {
     final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
-        name: '_HomeControllerBase.getProviders');
+        name: '_HomeControllerBase.filterCategory');
     try {
-      return super.getProviders();
+      return super.filterCategory(id);
+    } finally {
+      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void filterByName() {
+    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
+        name: '_HomeControllerBase.filterByName');
+    try {
+      return super.filterByName();
     } finally {
       _$_HomeControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -150,7 +185,8 @@ mixin _$HomeController on _HomeControllerBase, Store {
 selectedAddress: ${selectedAddress},
 categoriesFuture: ${categoriesFuture},
 selectedPage: ${selectedPage},
-providersFuture: ${providersFuture}
+providersFuture: ${providersFuture},
+selectedCategoryId: ${selectedCategoryId}
     ''';
   }
 }

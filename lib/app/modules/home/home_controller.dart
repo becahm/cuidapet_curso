@@ -1,6 +1,7 @@
 import 'package:cuidapet_curso/app/models/category_model.dart';
 import 'package:cuidapet_curso/app/models/provider_search_model.dart';
 import 'package:cuidapet_curso/app/services/provider_service.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
 import 'package:cuidapet_curso/app/models/address_model.dart';
@@ -14,9 +15,10 @@ part 'home_controller.g.dart';
 class HomeController = _HomeControllerBase with _$HomeController;
 
 abstract class _HomeControllerBase with Store {
-  AddressService _addressService;
-  CategoriesService _categoryService;
-  ProviderService _providerService;
+  final AddressService _addressService;
+  final CategoriesService _categoryService;
+  final ProviderService _providerService;
+  final filterTextFieldController = TextEditingController();
 
   @observable
   AddressModel selectedAddress;
@@ -29,6 +31,11 @@ abstract class _HomeControllerBase with Store {
 
   @observable
   ObservableFuture<List<ProviderSearchModel>> providersFuture;
+
+  List<ProviderSearchModel> providersOriginal;
+
+  @observable
+  int selectedCategoryId;
 
   _HomeControllerBase(
     this._addressService,
@@ -44,7 +51,7 @@ abstract class _HomeControllerBase with Store {
     await verifyIfHasAddress();
     await getSelectedAddress();
     getCategories();
-    getProviders();
+    await getProviders();
   }
 
   @action
@@ -67,8 +74,44 @@ abstract class _HomeControllerBase with Store {
   }
 
   @action
-  void getProviders() {
+  Future<void> getProviders() async {
     providersFuture =
         ObservableFuture(_providerService.searchProviders(selectedAddress));
+
+    providersOriginal = await providersFuture;
+    selectedCategoryId = null;
+    filterTextFieldController.text = '';
+    filterTextFieldController.text = '';
+  }
+
+  @action
+  void filterCategory(int id) {
+    if (selectedCategoryId == id) {
+      selectedCategoryId = null;
+    } else {
+      selectedCategoryId = id;
+    }
+    _filterProviders();
+  }
+
+  @action
+  void filterByName() {
+    _filterProviders();
+  }
+
+  void _filterProviders() {
+    var providers = providersOriginal;
+    if (selectedCategoryId != null) {
+      providers =
+          providers.where((e) => e.categoria.id == selectedCategoryId).toList();
+    }
+    if (filterTextFieldController.text.isNotEmpty) {
+      providers = providers
+          .where((e) => e.nome
+              .toLowerCase()
+              .contains(filterTextFieldController.text.toLowerCase()))
+          .toList();
+    }
+    providersFuture = ObservableFuture(Future.value(providers));
   }
 }
