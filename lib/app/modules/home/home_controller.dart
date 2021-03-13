@@ -20,6 +20,12 @@ abstract class _HomeControllerBase with Store {
   final ProviderService _providerService;
   final filterTextFieldController = TextEditingController();
 
+  _HomeControllerBase(
+    this._addressService,
+    this._categoryService,
+    this._providerService,
+  );
+
   @observable
   AddressModel selectedAddress;
 
@@ -36,12 +42,6 @@ abstract class _HomeControllerBase with Store {
 
   @observable
   int selectedCategoryId;
-
-  _HomeControllerBase(
-    this._addressService,
-    this._categoryService,
-    this._providerService,
-  );
 
   @action
   void changeSelectedPage(int page) => selectedPage = page;

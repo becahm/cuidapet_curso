@@ -1,4 +1,5 @@
 import 'package:cuidapet_curso/app/modules/home/addresses/addresses_module.dart';
+import 'package:cuidapet_curso/app/modules/provider/provider_module.dart';
 import 'package:cuidapet_curso/app/repository/categories_repository.dart';
 import 'package:cuidapet_curso/app/services/categories_service.dart';
 
@@ -21,6 +22,7 @@ class HomeModule extends ChildModule {
   List<ModularRouter> get routers => [
         ModularRouter(Modular.initialRoute, child: (_, args) => HomePage()),
         ModularRouter(AddressesModule.route, module: AddressesModule()),
+        ModularRouter(ProviderModule.route, module: ProviderModule()),
       ];
 
   static Inject get to => Inject<HomeModule>.of();

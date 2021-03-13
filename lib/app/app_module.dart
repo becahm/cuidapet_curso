@@ -30,18 +30,10 @@ class AppModule extends MainModule {
 
   @override
   List<ModularRouter> get routers => [
-        ModularRouter(
-          Modular.initialRoute,
-          child: (context, args) => MainPage(),
-        ),
-        ModularRouter(
-          HomeModule.route,
-          module: HomeModule(),
-        ),
-        ModularRouter(
-          LoginModule.route,
-          module: LoginModule(),
-        )
+        ModularRouter(Modular.initialRoute,
+            child: (context, args) => MainPage()),
+        ModularRouter(HomeModule.route, module: HomeModule()),
+        ModularRouter(LoginModule.route, module: LoginModule()),
       ];
 
   @override
