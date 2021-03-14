@@ -19,6 +19,10 @@ abstract class _ProviderControllerBase with Store {
   @observable
   ObservableFuture<List<ServiceModel>> servicesFuture;
 
+  @observable
+  ObservableList<ServiceModel> selectedServices =
+      <ServiceModel>[].asObservable();
+
   @action
   void initPage(int providerId) {
     getProviderDetail(providerId);
@@ -35,5 +39,14 @@ abstract class _ProviderControllerBase with Store {
   void getProviderServices(int providerId) {
     servicesFuture =
         ObservableFuture(_providerService.searchProviderServices(providerId));
+  }
+
+  @action
+  void addRemoveService(ServiceModel service) {
+    if (selectedServices.contains(service)) {
+      selectedServices.remove(service);
+    } else {
+      selectedServices.add(service);
+    }
   }
 }

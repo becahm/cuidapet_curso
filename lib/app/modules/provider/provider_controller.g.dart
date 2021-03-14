@@ -51,6 +51,22 @@ mixin _$ProviderController on _ProviderControllerBase, Store {
     });
   }
 
+  final _$selectedServicesAtom =
+      Atom(name: '_ProviderControllerBase.selectedServices');
+
+  @override
+  ObservableList<ServiceModel> get selectedServices {
+    _$selectedServicesAtom.reportRead();
+    return super.selectedServices;
+  }
+
+  @override
+  set selectedServices(ObservableList<ServiceModel> value) {
+    _$selectedServicesAtom.reportWrite(value, super.selectedServices, () {
+      super.selectedServices = value;
+    });
+  }
+
   final _$_ProviderControllerBaseActionController =
       ActionController(name: '_ProviderControllerBase');
 
@@ -88,10 +104,22 @@ mixin _$ProviderController on _ProviderControllerBase, Store {
   }
 
   @override
+  void addRemoveService(ServiceModel service) {
+    final _$actionInfo = _$_ProviderControllerBaseActionController.startAction(
+        name: '_ProviderControllerBase.addRemoveService');
+    try {
+      return super.addRemoveService(service);
+    } finally {
+      _$_ProviderControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 providerFuture: ${providerFuture},
-servicesFuture: ${servicesFuture}
+servicesFuture: ${servicesFuture},
+selectedServices: ${selectedServices}
     ''';
   }
 }
