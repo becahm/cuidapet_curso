@@ -61,7 +61,7 @@ abstract class _AddressesControllerBase with Store {
         longitude: position.longitude,
         complemento: null);
     Loader.hide();
-    var editAddress = await Modular.link
+    var editAddress = await Modular.to
         .pushNamed(DetailPage.route, arguments: addressModel) as AddressModel;
     verifyEditAddress(editAddress);
   }

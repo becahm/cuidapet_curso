@@ -1,5 +1,6 @@
 import 'package:cuidapet_curso/app/core/database/connection.dart';
 import 'package:cuidapet_curso/app/modules/login/cadastro/cadastro_module.dart';
+import 'package:cuidapet_curso/app/shared/components/cuidapet_textFormField.dart';
 import 'package:cuidapet_curso/app/shared/components/facebook_button.dart';
 import 'package:cuidapet_curso/app/shared/theme_utils.dart';
 import 'package:flutter/material.dart';
@@ -78,16 +79,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
         padding: const EdgeInsets.all(15.0),
         child: Column(
           children: [
-            TextFormField(
+            CuidapetTextFormField(
+              label: 'Login',
               controller: controller.loginController,
-              decoration: InputDecoration(
-                labelText: 'Login',
-                labelStyle: TextStyle(fontSize: 15),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  gapPadding: 0,
-                ),
-              ),
               validator: (value) {
                 if (value.isEmpty) {
                   return 'Login obrigatório!';
@@ -100,20 +94,13 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
               height: 20,
             ),
             Observer(builder: (_) {
-              return TextFormField(
+              return CuidapetTextFormField(
+                label: 'Senha',
                 controller: controller.senhaController,
                 obscureText: controller.obscureText,
-                decoration: InputDecoration(
-                  suffixIcon: IconButton(
-                    icon: Icon(Icons.lock),
-                    onPressed: () => controller.showPassword(),
-                  ),
-                  labelText: 'Senha',
-                  labelStyle: TextStyle(fontSize: 15),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    gapPadding: 0,
-                  ),
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.lock),
+                  onPressed: () => controller.showPassword(),
                 ),
                 validator: (value) {
                   if (value.isEmpty) {

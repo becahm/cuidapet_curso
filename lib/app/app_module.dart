@@ -1,7 +1,10 @@
 import 'package:cuidapet_curso/app/core/database/connection_adm.dart';
+import 'package:cuidapet_curso/app/modules/home/addresses/addresses_module.dart';
 import 'package:cuidapet_curso/app/modules/home/home_module.dart';
 import 'package:cuidapet_curso/app/modules/login/login_module.dart';
 import 'package:cuidapet_curso/app/modules/main/main_page.dart';
+import 'package:cuidapet_curso/app/modules/provider/provider_module.dart';
+import 'package:cuidapet_curso/app/modules/scheduling/scheduling_page.dart';
 import 'package:cuidapet_curso/app/repository/address_repository.dart';
 import 'package:cuidapet_curso/app/repository/provider_repository.dart';
 import 'package:cuidapet_curso/app/repository/user_repository.dart';
@@ -13,6 +16,8 @@ import 'app_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
 import 'package:cuidapet_curso/app/app_widget.dart';
+
+import 'modules/scheduling/scheduling_module.dart';
 
 class AppModule extends MainModule {
   @override
@@ -34,6 +39,9 @@ class AppModule extends MainModule {
             child: (context, args) => MainPage()),
         ModularRouter(HomeModule.route, module: HomeModule()),
         ModularRouter(LoginModule.route, module: LoginModule()),
+        ModularRouter(AddressesModule.route, module: AddressesModule()),
+        ModularRouter(ProviderModule.route, module: ProviderModule()),
+        ModularRouter(SchedulingModule.route, module: SchedulingModule()),
       ];
 
   @override

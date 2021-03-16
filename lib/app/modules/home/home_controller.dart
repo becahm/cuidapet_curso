@@ -56,9 +56,11 @@ abstract class _HomeControllerBase with Store {
 
   @action
   Future<void> verifyIfHasAddress() async {
-    var hasAddress = await _addressService.hasRegisteredAdress();
-    if (!hasAddress) {
-      await Modular.link.pushNamed(AddressesModule.route);
+    final prefs = await SharedPrefsRepository.instance;
+    final selectedAddress = prefs.selectedAddress;
+    var hasRegistederedAddress = await _addressService.hasRegisteredAdress();
+    if (selectedAddress == null || !hasRegistederedAddress) {
+      await Modular.to.pushNamed(AddressesModule.route);
     }
   }
 

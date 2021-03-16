@@ -1,5 +1,6 @@
 import 'package:cuidapet_curso/app/modules/home/addresses/addresses_module.dart';
 import 'package:cuidapet_curso/app/modules/home/home_controller.dart';
+import 'package:cuidapet_curso/app/repository/shared_prefs_repository.dart';
 import 'package:cuidapet_curso/app/shared/theme_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -69,11 +70,17 @@ class HomeAppBar extends PreferredSize {
               IconButton(
                 icon: Icon(Icons.location_on),
                 onPressed: () async {
-                  await Modular.link.pushNamed(AddressesModule.route);
+                  await Modular.to.pushNamed(AddressesModule.route);
                   await controller.getSelectedAddress();
                   controller.getProviders();
                 },
-              )
+              ),
+              IconButton(
+                  icon: Icon(Icons.exit_to_app),
+                  onPressed: () async {
+                    final prefs = await SharedPrefsRepository.instance;
+                    await prefs.logout();
+                  }),
             ],
           ),
         );

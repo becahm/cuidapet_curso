@@ -32,7 +32,7 @@ class _AddressesPageState
         if (hasSelectedAddress) {
           return true;
         } else {
-          Get.snackbar('Erro', 'Selecione um enedereço!');
+          Get.snackbar('Erro', 'Selecione um endereço!');
           return false;
         }
       },
