@@ -5,6 +5,7 @@ import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:cuidapet_curso/app/models/service_model.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
 import 'scheduling_controller.dart';
@@ -87,15 +88,36 @@ class _SchedulingPageState
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
                 child: Text(
                   'Dados da reserva',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(15.0),
+                padding: const EdgeInsets.all(8.0),
                 child: CuidapetTextFormField(label: 'Seu Nome'),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: CuidapetTextFormField(label: 'Nome do Pet'),
+              ),
+              Container(
+                margin: EdgeInsets.only(bottom: 10),
+                padding: EdgeInsets.all(10),
+                height: 60,
+                width: ScreenUtil.screenWidthDp * 0.9,
+                child: RaisedButton(
+                  onPressed: () {},
+                  color: ThemeUtils.primaryColor,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Text(
+                    'Agendar',
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                ),
               ),
             ]),
           ),
