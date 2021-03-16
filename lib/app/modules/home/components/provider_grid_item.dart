@@ -11,7 +11,7 @@ class ProviderGridItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () =>
-          Modular.link.pushNamed(ProviderModule.route, arguments: _provider.id),
+          Modular.to.pushNamed(ProviderModule.route, arguments: _provider.id),
       child: Stack(
         children: [
           Card(

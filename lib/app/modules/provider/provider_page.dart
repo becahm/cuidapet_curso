@@ -1,5 +1,6 @@
 import 'package:cuidapet_curso/app/models/provider_detail_model.dart';
 import 'package:cuidapet_curso/app/models/service_model.dart';
+import 'package:cuidapet_curso/app/modules/scheduling/scheduling_module.dart';
 import 'package:cuidapet_curso/app/shared/theme_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -37,7 +38,11 @@ class _ProviderPageState
           duration: Duration(milliseconds: 300),
           opacity: controller.selectedServices.isEmpty ? 0 : 1,
           child: FloatingActionButton.extended(
-            onPressed: null,
+            onPressed: () => Modular.to.pushNamed(SchedulingModule.route,
+                arguments: {
+                  'services': controller.selectedServices,
+                  'providerId': widget.providerId
+                }),
             icon: Icon(Icons.schedule),
             backgroundColor: ThemeUtils.primaryColor,
             label: Text('Fazer agendamento'),

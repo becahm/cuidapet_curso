@@ -14,9 +14,7 @@ class ProviderModule extends ChildModule {
   @override
   List<ModularRouter> get routers => [
         ModularRouter(Modular.initialRoute,
-            child: (_, args) => ProviderPage(
-                  providerId: args.data,
-                )),
+            child: (_, args) => ProviderPage(providerId: args.data)),
       ];
 
   static Inject get to => Inject<ProviderModule>.of();
