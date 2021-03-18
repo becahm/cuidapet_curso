@@ -4,12 +4,13 @@ import 'package:cuidapet_curso/app/modules/home/home_module.dart';
 import 'package:cuidapet_curso/app/modules/login/login_module.dart';
 import 'package:cuidapet_curso/app/modules/main/main_page.dart';
 import 'package:cuidapet_curso/app/modules/provider/provider_module.dart';
-import 'package:cuidapet_curso/app/modules/scheduling/scheduling_page.dart';
 import 'package:cuidapet_curso/app/repository/address_repository.dart';
 import 'package:cuidapet_curso/app/repository/provider_repository.dart';
+import 'package:cuidapet_curso/app/repository/scheduling_repository.dart';
 import 'package:cuidapet_curso/app/repository/user_repository.dart';
 import 'package:cuidapet_curso/app/services/address_service.dart';
 import 'package:cuidapet_curso/app/services/provider_service.dart';
+import 'package:cuidapet_curso/app/services/scheduling_service.dart';
 import 'package:cuidapet_curso/app/services/user_service.dart';
 import 'package:cuidapet_curso/app/shared/auth_store.dart';
 import 'app_controller.dart';
@@ -30,6 +31,8 @@ class AppModule extends MainModule {
         Bind((i) => AddressService(i.get())),
         Bind((i) => ProviderRepository()),
         Bind((i) => ProviderService(i.get())),
+        Bind((i) => SchedulingRepository()),
+        Bind((i) => SchedulingService(i.get())),
         Bind((i) => AuthStore()),
       ];
 

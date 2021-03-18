@@ -2,6 +2,7 @@ import 'package:cuidapet_curso/app/shared/components/cuidapet_textFormField.dart
 import 'package:cuidapet_curso/app/shared/theme_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:cuidapet_curso/app/models/service_model.dart';
@@ -40,27 +41,30 @@ class _SchedulingPageState
           ),
           SliverList(
             delegate: SliverChildListDelegate([
-              CalendarCarousel(
-                height: 420,
-                locale: 'pt_BR',
-                headerTextStyle:
-                    TextStyle(color: ThemeUtils.primaryColor, fontSize: 25),
-                selectedDateTime: DateTime.now(),
-                onDayPressed: (day, _) {
-                  print(day);
-                },
-              ),
+              Observer(builder: (_) {
+                return CalendarCarousel(
+                  height: 420,
+                  locale: 'pt_BR',
+                  headerTextStyle:
+                      TextStyle(color: ThemeUtils.primaryColor, fontSize: 25),
+                  selectedDateTime: controller.selectedDate,
+                  onDayPressed: (day, _) => controller.changeDate(day),
+                );
+              }),
               FlatButton(
                 onPressed: () async {
                   var selectedTime = await showTimePicker(
-                      context: context, initialTime: TimeOfDay.now());
-                  print(selectedTime);
+                      context: context, initialTime: controller.selectedTime);
+                  controller.changeTime(selectedTime);
                 },
                 textColor: ThemeUtils.primaryColor,
                 child: Column(
                   children: [
                     Text('Selecione um horário'),
-                    Text('22:00'),
+                    Observer(builder: (_) {
+                      final time = controller.selectedTime;
+                      return Text(time.format(context));
+                    }),
                   ],
                 ),
               ),
@@ -95,13 +99,30 @@ class _SchedulingPageState
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CuidapetTextFormField(label: 'Seu Nome'),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: CuidapetTextFormField(label: 'Nome do Pet'),
+              Form(
+                key: controller.formKey,
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: CuidapetTextFormField(
+                        label: 'Seu Nome',
+                        controller: controller.nameController,
+                        validator: (value) =>
+                            value.isEmpty ? 'Nome obrigatório' : null,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: CuidapetTextFormField(
+                        label: 'Nome do Pet',
+                        controller: controller.petController,
+                        validator: (value) =>
+                            value.isEmpty ? 'Nome do pet obrigatório' : null,
+                      ),
+                    ),
+                  ],
+                ),
               ),
               Container(
                 margin: EdgeInsets.only(bottom: 10),
@@ -109,7 +130,8 @@ class _SchedulingPageState
                 height: 60,
                 width: ScreenUtil.screenWidthDp * 0.9,
                 child: RaisedButton(
-                  onPressed: () {},
+                  onPressed: () => controller.saveScheduling(
+                      widget.providerId, widget.services),
                   color: ThemeUtils.primaryColor,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)),

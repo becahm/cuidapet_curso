@@ -8,7 +8,7 @@ class SchedulingModule extends ChildModule {
 
   @override
   List<Bind> get binds => [
-        $SchedulingController,
+        Bind((i) => SchedulingController(i.get())),
       ];
 
   @override
