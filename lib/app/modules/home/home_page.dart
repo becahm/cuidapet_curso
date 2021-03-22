@@ -1,6 +1,7 @@
 import 'package:cuidapet_curso/app/models/category_model.dart';
 import 'package:cuidapet_curso/app/models/provider_search_model.dart';
 import 'package:cuidapet_curso/app/modules/home/components/home_appbar.dart';
+import 'package:cuidapet_curso/app/modules/home/components/home_drawer.dart';
 import 'package:cuidapet_curso/app/modules/home/components/provider_grid_item.dart';
 import 'package:cuidapet_curso/app/modules/home/components/provider_list_item.dart';
 import 'package:cuidapet_curso/app/shared/theme_utils.dart';
@@ -42,7 +43,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      drawer: Drawer(),
+      drawer: HomeDrawer(),
       appBar: appBar,
       body: RefreshIndicator(
         onRefresh: () => controller.getProviders(),

@@ -29,4 +29,8 @@ class AddressService {
       String placeId) {
     return _repository.getAddressDetailGooglePlaces(placeId);
   }
+
+  Future<void> clearAddresses() {
+    return _repository.clearAddresses();
+  }
 }

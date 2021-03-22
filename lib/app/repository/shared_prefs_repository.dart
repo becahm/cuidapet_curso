@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:cuidapet_curso/app/models/address_model.dart';
 import 'package:cuidapet_curso/app/models/user_model.dart';
 import 'package:cuidapet_curso/app/modules/main/main_page.dart';
+import 'package:cuidapet_curso/app/services/address_service.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -49,7 +51,9 @@ class SharedPrefsRepository {
 
   Future<void> logout() async {
     await prefs.clear();
-    Modular.to.pushNamedAndRemoveUntil(MainPage.route, (_) => false);
+    //await Modular.get<AddressService>().clearAddresses();
+    await Modular.to.pushNamedAndRemoveUntil(
+        MainPage.route, ModalRoute.withName(MainPage.route));
   }
 
   Future<void> registerSelectedAddress(AddressModel address) async {

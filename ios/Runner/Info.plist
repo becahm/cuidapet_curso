@@ -91,6 +91,8 @@
 <false/>
 <key>NSLocationWhenInUseUsageDescription</key>
 <string>This app needs access to location when open.</string>
+<key>NSCameraUsageDescription</key>
+<string>Precisamos de acesso à sua câmera para atualizar a foto de perfil</string>
 
 </dict>
 </plist>

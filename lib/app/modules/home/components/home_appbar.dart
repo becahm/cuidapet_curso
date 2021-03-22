@@ -75,12 +75,6 @@ class HomeAppBar extends PreferredSize {
                   controller.getProviders();
                 },
               ),
-              IconButton(
-                  icon: Icon(Icons.exit_to_app),
-                  onPressed: () async {
-                    final prefs = await SharedPrefsRepository.instance;
-                    await prefs.logout();
-                  }),
             ],
           ),
         );

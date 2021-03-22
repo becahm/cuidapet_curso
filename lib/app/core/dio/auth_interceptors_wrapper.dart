@@ -28,17 +28,17 @@ class AuthInterceptorsWrapper extends InterceptorsWrapper {
   @override
   Future onError(DioError err) async {
     print('######## Error Log ########');
-    print('data ${err.response}');
+    print('error: $err');
+    print('data: ${err.response}');
     // verificar se deu erro 403 ou 401  fazer o refresh do token
     if (err.response?.statusCode == 403 || err.response?.statusCode == 401) {
+      print('#####Token expirado, tentando refresh token ######');
+
       await _refreshToken();
       final req = err.request;
 
       print('#####Token atualizado ######');
-      await CustomDio.authInstance.request(
-        req.path,
-        options: req.data,
-      );
+      return CustomDio.authInstance.request(req.path, options: req);
     }
     return err;
   }
@@ -47,16 +47,17 @@ class AuthInterceptorsWrapper extends InterceptorsWrapper {
     final prefs = await SharedPrefsRepository.instance;
     final security = SecureStorageRepository();
     try {
-      final acessToken = prefs.acessToken;
+      final accessToken = prefs.acessToken;
       final refreshToken = await security.refreshToken;
 
       var resultToken = await CustomDio.instance.put('/login/refresh', data: {
-        'token': acessToken,
+        'access_token': accessToken,
         'refresh_token': refreshToken,
       });
-      await prefs.registerAcessToken(resultToken.data['acess_token']);
+      await prefs.registerAcessToken(resultToken.data['access_token']);
       await security.registerRefreshToken(resultToken.data['refresh_token']);
     } catch (e) {
+      print('#####Erro ao tentar refresh token, fazendo logout ######');
       await prefs.logout();
     }
   }
