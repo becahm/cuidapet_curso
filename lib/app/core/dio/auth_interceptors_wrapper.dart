@@ -51,7 +51,7 @@ class AuthInterceptorsWrapper extends InterceptorsWrapper {
       final refreshToken = await security.refreshToken;
 
       var resultToken = await CustomDio.instance.put('/login/refresh', data: {
-        'access_token': accessToken,
+        'token': accessToken,
         'refresh_token': refreshToken,
       });
       await prefs.registerAcessToken(resultToken.data['access_token']);
