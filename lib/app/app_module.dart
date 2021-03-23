@@ -3,6 +3,7 @@ import 'package:cuidapet_curso/app/modules/home/addresses/addresses_module.dart'
 import 'package:cuidapet_curso/app/modules/home/home_module.dart';
 import 'package:cuidapet_curso/app/modules/login/login_module.dart';
 import 'package:cuidapet_curso/app/modules/main/main_page.dart';
+import 'package:cuidapet_curso/app/modules/my_schedulings/my_schedulings_module.dart';
 import 'package:cuidapet_curso/app/modules/provider/provider_module.dart';
 import 'package:cuidapet_curso/app/repository/address_repository.dart';
 import 'package:cuidapet_curso/app/repository/provider_repository.dart';
@@ -45,6 +46,7 @@ class AppModule extends MainModule {
         ModularRouter(AddressesModule.route, module: AddressesModule()),
         ModularRouter(ProviderModule.route, module: ProviderModule()),
         ModularRouter(SchedulingModule.route, module: SchedulingModule()),
+        ModularRouter(MySchedulingsModule.route, module: MySchedulingsModule()),
       ];
 
   @override

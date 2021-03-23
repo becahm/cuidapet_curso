@@ -1,4 +1,5 @@
 import 'package:cuidapet_curso/app/core/dio/custom_dio.dart';
+import 'package:cuidapet_curso/app/models/scheduling_model.dart';
 import 'package:cuidapet_curso/app/viewsModels/scheduling_vm.dart';
 
 class SchedulingRepository {
@@ -10,5 +11,11 @@ class SchedulingRepository {
       'nome': scheduling.ownerName,
       'nome_pet': scheduling.petName
     });
+  }
+
+  Future<List<SchedulingModel>> getSchedulings() {
+    return CustomDio.authInstance.get('/agendamentos').then((res) => res.data
+        .map<SchedulingModel>((s) => SchedulingModel.fromJson(s))
+        .toList());
   }
 }

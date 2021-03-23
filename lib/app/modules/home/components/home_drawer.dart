@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cuidapet_curso/app/modules/my_schedulings/my_schedulings_module.dart';
 import 'package:cuidapet_curso/app/repository/shared_prefs_repository.dart';
 import 'package:cuidapet_curso/app/services/user_service.dart';
 import 'package:cuidapet_curso/app/shared/auth_store.dart';
@@ -28,9 +29,9 @@ class HomeDrawer extends Drawer {
                         children: [
                           Align(
                             child: CircleAvatar(
-                              backgroundImage: user.imgAvatar != null
-                                  ? NetworkImage(user.imgAvatar)
-                                  : null,
+                              // backgroundImage: user.imgAvatar != null
+                              //     ? NetworkImage(user.imgAvatar)
+                              //     : null,
                               radius: 100,
                             ),
                           ),
@@ -60,6 +61,8 @@ class HomeDrawer extends Drawer {
                       shrinkWrap: true,
                       children: [
                         ListTile(
+                          onTap: () =>
+                              Modular.to.pushNamed(MySchedulingsModule.route),
                           leading: Icon(Icons.receipt),
                           title: Text('Meus agendamentos'),
                         ),
