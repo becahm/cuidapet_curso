@@ -38,6 +38,7 @@ android {
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -56,7 +57,7 @@ flutter {
 dependencies {
   // ...
 
-  implementation 'com.google.firebase:firebase-messaging:21.0.1'
+  implementation 'com.google.firebase:firebase-messaging:20.2.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

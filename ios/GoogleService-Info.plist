@@ -32,5 +32,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:830178002286:ios:7eebfa5f2af9fe0843ad7f</string>
+	<key>DATABASE_URL</key>
+	<string>https://cuidapet-curso-32ffb-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>

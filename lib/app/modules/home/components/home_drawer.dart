@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cuidapet_curso/app/modules/chat/chat_module.dart';
 import 'package:cuidapet_curso/app/modules/my_schedulings/my_schedulings_module.dart';
 import 'package:cuidapet_curso/app/repository/shared_prefs_repository.dart';
 import 'package:cuidapet_curso/app/services/user_service.dart';
@@ -67,6 +68,7 @@ class HomeDrawer extends Drawer {
                           title: Text('Meus agendamentos'),
                         ),
                         ListTile(
+                          onTap: () => Modular.to.pushNamed(ChatModule.route),
                           leading: Icon(Icons.chat),
                           title: Text('Chats'),
                         ),

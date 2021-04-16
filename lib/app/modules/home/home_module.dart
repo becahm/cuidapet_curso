@@ -1,5 +1,3 @@
-import 'package:cuidapet_curso/app/modules/home/addresses/addresses_module.dart';
-import 'package:cuidapet_curso/app/modules/provider/provider_module.dart';
 import 'package:cuidapet_curso/app/repository/categories_repository.dart';
 import 'package:cuidapet_curso/app/services/categories_service.dart';
 

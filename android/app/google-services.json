@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "830178002286",
+    "firebase_url": "https://cuidapet-curso-32ffb-default-rtdb.firebaseio.com",
     "project_id": "cuidapet-curso-32ffb",
     "storage_bucket": "cuidapet-curso-32ffb.appspot.com"
   },
@@ -37,6 +38,13 @@
             {
               "client_id": "830178002286-rfh6inhlridvtu9di7cfe5h8gr33ttcv.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "830178002286-m3fud2r76foc51oi9k9q02l3uitj0i0p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "br.com.rebecamotta.cuidapetCurso"
+              }
             }
           ]
         }
