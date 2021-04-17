@@ -10,7 +10,11 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-        <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA" />
+     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+     <uses-permission android:name="android.permission.VIBRATE" />
+
+
 
 
 
@@ -23,6 +27,9 @@
 
         <meta-data android:name="com.google.android.geo.API_KEY"
                android:value="AIzaSyCLSCP8aewB6bUxlqhircHfluz8wL-WLsg"/>
+         <meta-data android:name="com.google.firebase.messaging.default_notification_channel_id"
+                android:value="br.com.rebecamotta.cuidapet_curso"/>
+         
 
 
         <activity

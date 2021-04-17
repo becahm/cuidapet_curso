@@ -45,6 +45,7 @@ dependencies:
   flutter_dotenv: ^2.1.0
   flutter_facebook_login: ^3.0.0
   flutter_icons: ^1.1.0
+  flutter_local_notifications: ^1.4.4+2 
   flutter_mobx: ^1.1.0
   flutter_modular: ^2.0.1
   flutter_screenutil: ^1.1.0
